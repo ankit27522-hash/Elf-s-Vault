@@ -4,7 +4,7 @@ import logo from '../assets/elf_vault_logo.jfif'
 import blue from '../assets/blue girl with wand.png'
 import singer from '../assets/singer_pixel-removebg-preview.png'
 
-const Footer = () => {
+const Header = () => {
   return (
     <div className='bg-black/50 py-10px flex flex-col md:flex-row  justify-between w-full'>
       <div className='Left flex justify-center ml-0'>
@@ -41,4 +41,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default Header

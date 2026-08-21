@@ -20,7 +20,6 @@ import knight from './assets/me.png'
 import wizard from './assets/wizard.png'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   const ref = useRef();
   const passwordRef=useRef();
@@ -37,7 +36,7 @@ function App() {
   }, [])
 
   const handleChange=(e)=>{
-    setform({...form, [e.target.name]:[e.target.value]})
+    setform({...form, [e.target.name]:e.target.value})
   }
   
 
@@ -88,7 +87,7 @@ function App() {
     toast.success('💾 Password saved successfully!', {
     position: "bottom-left",
     autoClose: 3000,
-    theme: "dark",
+    theme: "light",
   });
     setform({site:"", password:"", username:"", link:""})
 
@@ -97,10 +96,15 @@ function App() {
 
   const deletePassword=(id)=>{
     let c=confirm("do you really want to delte this password?")
-    if(c){
-      console.log("deleting password of id ", id)
-      setpasswordArray(passwordArray.filter(item=>item.id!==id));
-      localStorage.getItem("password", JSON.stringify([...passwordArray, form]))
+    if(c){  
+      const updatedArray = passwordArray.filter(item => item.id !== id);
+      setpasswordArray(updatedArray);
+      localStorage.setItem("passwords", JSON.stringify(updatedArray));
+      toast.success('🗑️ Password deleted', {
+        position: "bottom-left",
+        autoClose: 3000,
+        theme: "light",
+      });
     }
   }
 
